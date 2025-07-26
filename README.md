@@ -31,7 +31,7 @@ There seems to be no complete BIOS modification guide for the ThinkPad T460s, so
 
 ### Software:
 
-- [UEFITool](https://github.com/LongSoft/UEFITool) (Use numeric version for patch support)
+- [UEFITool](https://github.com/LongSoft/UEFITool/releases/tag/0.21.5) (Use numeric version for patch support)
 - [AsProgrammer](https://github.com/nofeletru/UsbAsp-flash/releases)
 - Hex editor (e.g., HxD, i'm going to use hexed.it)
 
