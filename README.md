@@ -8,7 +8,7 @@
 1. Flashing BIOS has risks — proceed with caution.
 2. I take no responsibility if something goes wrong.
 3. I am not a professional. I may not be able to help.
-4. Tested on: BIOS version 1.09, motherboard NW-A581 Rev3.0
+4. Tested on: BIOS version ???, M2xL3 Motherboard Rev???
 
 There seems to be no complete BIOS modification guide for the ThinkPad T460s, so here is one.
 
@@ -27,7 +27,7 @@ There seems to be no complete BIOS modification guide for the ThinkPad T460s, so
 - Another computer (not the ThinkPad)
 - CH341A programmer + SOIC8 test clip
 - Drivers for CH341A
-- Optional: Multimeter, USB extension cable
+- Optional: USB extension cable
 
 ### Software:
 
@@ -89,45 +89,57 @@ There seems to be no complete BIOS modification guide for the ThinkPad T460s, so
 
 ## 🧪 Locating and Connecting to BIOS Chip
 
-1. Locate chip on motherboard (label: U49 — small chip between RAM and fan)
-2. Identify chip model (e.g., Winbond)
+1. Locate chip on motherboard (label: U49 — small chip between RAM and mini pci)
+2. Identify chip model (e.g., Winbond) <img width="1366" height="768" alt="imagen" src="https://github.com/user-attachments/assets/750769db-bfab-47e3-8afc-274ab3f1c94d" />
+
 3. Assemble CH341A:
-   - Bridge pins 1-2 to enter programming mode
-   - Align adapter: pin 1 top-left (consult your CH341A)
-   - (Optional) Use multimeter to check VCC–GND \~3V
-   - Attach SOIC8 clip — red wire = pin 1
+   - Bridge pins 1-2 to enter programming mode ![v2-83c227a52311dcc44a89858968e49c8f_1440w](https://github.com/user-attachments/assets/9fef7671-3823-4652-8adf-b9468c58ab3b)
+
+   - Align adapter: pin 1 top-left (consult your CH341A) ![v2-fc144adc2d93529fb5778c422eab82ee_1440w](https://github.com/user-attachments/assets/23b7cf55-11cf-4b3f-b2c5-2ee8e4a03686)
+
+   - Attach SOIC8 clip — red wire = pin 1 ![v2-3947f7b536f421e4b73a03f8077906df_1440w](https://github.com/user-attachments/assets/cf23920c-a4b7-497d-b809-1091e000a619)
+
 4. Plug into USB — ensure device is seen as "Interface", not COM
 5. Unplug all batteries (CMOS and internal)
-6. Connect clip firmly to BIOS chip (pay attention to pin orientation!)
+6. Connect clip firmly to BIOS chip (pay attention to pin orientation!) tre little dot says where the red cable should be
 7. Reconnect CH341A (extension cable recommended)
 
 ---
 
 ## 🧩 Flashing Process
 
-1. Launch AsProgrammer
-2. Select chip model via `IC > Search`
-3. Click "Read IC"
+1. Install the driver <img width="1366" height="768" alt="imagen" src="https://github.com/user-attachments/assets/a1347283-95db-4963-abab-79fe536e89d8" />
+2. Launch AsProgrammer
+3. Select chip model via `IC > Search`
+4. Click "Read IC"
    - If output is all `FF` or red log text appears, re-check connections
-4. Save the dump — backup in a safe place!
-5. Save it again as `1.BIN` in the UEFIPatch folder
-6. Place your patch file as `xx60_patches_v1.txt`
-7. Open Powershell in the same folder
-8. Run:
+5. Save the dump — backup in a safe place!
+6. Do 4 oh more dumps just to be sure
+7. Save it again as `1.BIN` in the UEFIPatch folder
+8. If u are using 1.bin from this repo make sure your md5 cheksum is 
+9. Place your patch file as `patches.txt`
+10. It should look like this <img width="1366" height="768" alt="imagen" src="https://github.com/user-attachments/assets/45572bac-f06d-4cea-818d-86787bf50b09" />
+
+11. Open Powershell in the same folder
+12. Run:
 
 ```sh
-./UEFIPatch.exe 1.BIN xx60_patches_v1.txt
+./UEFIPatch.exe 1.BIN
 ```
 
 9. A file `1.BIN.patched` will be generated
 10. Open it in a hex editor, search `4C 4E 56 42 42 53 45 43 FB`
     - Change `FB` to `FF`, save
+      <img width="1366" height="768" alt="imagen" src="https://github.com/user-attachments/assets/de526907-049f-4e76-8b24-b27b42d5dba9" />
+
 11. Open `1.BIN.patched` in AsProgrammer
 12. Perform:
 
 - Erase IC
 - Program IC
 - Verify IC (Use the buttons in sequence)
+  <img width="1366" height="768" alt="imagen" src="https://github.com/user-attachments/assets/dfc95cd5-d738-4a15-abf5-2e2c1040e96f" />
+
 
 ---
 
