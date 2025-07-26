@@ -89,7 +89,8 @@ There seems to be no complete BIOS modification guide for the ThinkPad T460s, so
 
 ## 🧪 Locating and Connecting to BIOS Chip
 
-1. Locate chip on motherboard (label: U49 — small chip between RAM and mini pci)
+1. Locate chip on motherboard (label: U49 — small chip between RAM and mini pci) ![2025-07-26-13-12-43-526](https://github.com/user-attachments/assets/8f328179-db40-493a-afa3-aeed0c05d9df)
+
 2. Identify chip model (e.g., Winbond) <img width="1366" height="768" alt="imagen" src="https://github.com/user-attachments/assets/750769db-bfab-47e3-8afc-274ab3f1c94d" />
 
 3. Assemble CH341A:
@@ -146,7 +147,7 @@ There seems to be no complete BIOS modification guide for the ThinkPad T460s, so
 ## ✅ Done!
 
 Reboot your ThinkPad. BIOS may reboot a few times and beep (e.g., 5+5). That’s normal. You should now have the Advanced Menu available — including CFG Lock options.
-
+![2025-07-26-15-19-33-688](https://github.com/user-attachments/assets/66b99c63-8658-4930-972d-b565de1beeb8)
 > Be gentle when removing the SOIC clip — don’t yank it!
 
 Reassemble the laptop and reconnect all batteries.
