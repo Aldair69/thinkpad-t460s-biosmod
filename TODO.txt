@@ -1,0 +1,3 @@
+get spd blobs using the t470s dt for coreboot
+
+Fix the aux thing doing a cleanup
